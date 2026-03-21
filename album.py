@@ -24,7 +24,7 @@ class Album:
         # Is the album active 
         self._active = active
         # Years the album was released
-        self.years = list(years)
+        self._years = list(years)
 
     # Properties (getters)
     @property
@@ -54,6 +54,13 @@ class Album:
             self: 
         '''
         return list(self._years)
+    
+    def debut_year(self, years):
+        '''
+        Calculates the debut year for the album
+        '''
+        debut_year = years[0]
+        return debut_year
     
     def __str__(self):
         '''
