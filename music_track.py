@@ -53,3 +53,9 @@ class MusicTrack(ABC):
         seconds = duration % 60
         formatted = f"{minutes:.2f}:{seconds:.2f}"
         return formatted
+    
+    # Concrete method
+    def total_play_time(self, num_plays: int, duration):
+        # Returns total play time of track
+        num_plays = input()
+        return num_plays * duration
