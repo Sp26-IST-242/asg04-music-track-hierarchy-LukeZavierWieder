@@ -17,3 +17,39 @@ Design decisions to implement:
   • __hash__ is defined to stay consistent with __eq__ (Python sets __hash__ to
     None when you define __eq__, making objects unhashable unless you fix it).
 """
+from abc import ABC, abstractmethod
+from functools import total_ordering # Sorting purposes
+from artist import Artist
+from album import Album
+
+class MusicTrack(ABC):
+    '''
+    Creates the abstract class for music tracks
+    '''
+    # Constructor
+    def __init__(self, artist: Artist, album: Album,
+                 duration: int):
+        self._artist = artist
+        self._album = album
+        self._duration = duration
+    
+    # Getters
+    @property
+    def artist(self):
+        return self._artist
+    
+    @property
+    def album(self):
+        return self._album
+    
+    @property
+    def duration(self):
+        return self._duration
+    
+    # Abstract method
+    @abstractmethod
+    def play_time_formatted(self, duration : int):
+        minutes = duration // 60
+        seconds = duration % 60
+        formatted = f"{minutes:.2f}:{seconds:.2f}"
+        return formatted
