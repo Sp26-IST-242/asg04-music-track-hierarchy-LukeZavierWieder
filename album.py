@@ -54,16 +54,15 @@ class Album:
             self: 
         '''
         return list(self._years)
-    
-    def debut_year(self, years):
+    @property
+    def debut_year(self):
         '''
         Calculates the debut year for the album
         '''
-        debut_year = years[0]
-        return debut_year
+        return self._years[0]
     
     def __str__(self):
         '''
         Prints out the Artist object
         '''
-        return f"{self._title}. active = {self._active}, debut year: {self._years[0]}"
+        return f"{self._title} active = {self._active}, debut year: {self._years[0]}"

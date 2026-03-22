@@ -28,10 +28,10 @@ class MusicTrack(ABC):
     '''
     # Constructor
     def __init__(self, artist: Artist, album: Album,
-                 duration: int):
+                 duration_seconds: int):
         self._artist = artist
         self._album = album
-        self._duration = duration
+        self._duration_seconds = duration_seconds
     
     # Getters
     @property
@@ -44,15 +44,14 @@ class MusicTrack(ABC):
     
     @property
     def duration(self):
-        return self._duration
+        return self._duration_seconds
     
     # Abstract method
     @abstractmethod
-    def play_time_formatted(self, duration : int):
+    def play_time_formatted(self, duration_seconds : int):
         ...
     
     # Concrete method
-    def total_play_time(self, num_plays: int, duration):
+    def total_play_time(self, num_plays: int):
         # Returns total play time of track
-        num_plays = input()
-        return num_plays * duration
+        return num_plays * self._duration_seconds

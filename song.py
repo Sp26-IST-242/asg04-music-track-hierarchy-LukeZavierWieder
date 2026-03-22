@@ -29,17 +29,23 @@ class Song(MusicTrack):
     '''
     # Constructor
     def __init__(self, artist : Artist,
-                album : Album, duration: int):
-        super().__init__(artist, album, duration)
+                album : Album, duration_seconds : int):
+        super().__init__(artist, album, duration_seconds)
     
     # Getters
-    def play_time_formatted(self, duration : int):
-      minutes = duration // 60
-      seconds = duration % 60
-      formatted = f"{minutes:02f}:{seconds:02f}"
-      return formatted
+    def play_time_formatted(self):
+      time = int(self._duration_seconds)
+      minutes = time // 60
+      seconds = time % 60
+      return f"{minutes:02}:{seconds:02}"
+    
+    @property
+    def duration_seconds(self):
+       return self._duration_seconds
+    @property
+    def release_year(self):
+       return self.album.debut_year
     
     # Print Song info
-    def __str__(self, formatted):
-       return f"({self._name}, {self._genre}) {self._title}. active = {self._active},"
-       f"debut year: {self._years[0]}, duration: {formatted}"
+    def __str__(self):
+       return f"({self._artist}) {self._album}, duration: {self.play_time_formatted()}"
