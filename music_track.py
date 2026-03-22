@@ -55,3 +55,14 @@ class MusicTrack(ABC):
     def total_play_time(self, num_plays: int):
         # Returns total play time of track
         return num_plays * self._duration_seconds
+    
+    # Sorting for tracks
+    def __eq__(self, other) -> bool:
+        if not isinstance(other, MusicTrack):
+            return NotImplemented
+        return self.release_year == other.release_year
+    
+    def __lt__(self, other) -> bool:
+        if not isinstance(other, MusicTrack):
+            return NotImplemented
+        return self.release_year < other.release_year
