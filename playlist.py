@@ -16,7 +16,7 @@ class Playlist:
     Creates the Playlist Class
     '''
     # Constructor
-    def __init__(self, tracks : list[str]):
+    def __init__(self):
         # The list of tracks
         self._tracks = []
     # Getter
